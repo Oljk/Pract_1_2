@@ -3,7 +3,6 @@ package odz;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import odz.ShoppingCart.Item;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,24 +14,24 @@ import static org.junit.Assert.*;
 public class ShoppingDiscountTest {
 
     private static final int[] Q_VALUES = {1, 9, 10, 50};
-    private static final Item.Type[] T_VALUES =
+    private static final Item.ItemType[] T_VALUES =
             {
-                    Item.Type.SECOND,
-                    Item.Type.REGULAR,
-                    Item.Type.SALE,
-                    Item.Type.DISCOUNT
+                    Item.ItemType.NEW,
+                    Item.ItemType.REGULAR,
+                    Item.ItemType.SALE,
+                    Item.ItemType.SECOND_FREE
             };
     private static final int[][] D_VALUES =
             {
-                    { 0, 50, 50, 50 },
-                    { 0, 0, 0, 0},
+                    { 0, 0, 0, 0 },
+                    { 0, 0, 1, 5},
                     { 90 },
-                    { 10, 10, 20, 50}
+                    { 0, 50, 51, 55}
             };
-    private Item.Type _type;
+    private Item.ItemType _type;
     private int _quantity;
     private int _discount;
-    public ShoppingDiscountTest(Item.Type type, int quantity, int discount){
+    public ShoppingDiscountTest(Item.ItemType type, int quantity, int discount){
         _type = type;
         _quantity = quantity;
         _discount = discount;
@@ -58,9 +57,8 @@ public class ShoppingDiscountTest {
     public void calculateDiscount(){
         assertEquals("type: "+ _type + ", quantity: " + _quantity,
                 _discount,
-                ShoppingCart.calculateDiscount(
-                        new Item("Title", 5.99f, _type, _quantity)
-                ),
+                        new Item("Title", 5.99f, _quantity, _type).calculateDiscount()
+                ,
                 0.01f
         );
     }
