@@ -21,43 +21,43 @@ public class ShoppingCarToStringTest extends junit.framework.TestCase {
     @Test
     public void testEmptyCart() {
         ShoppingCart emptyCart = new ShoppingCart();
-        assertEquals("No items.", emptyCart.toString());
+        assertEquals("No items.", emptyCart.formatTicket());
     }
 
     @Test
     public void testFilledCart() {
-        assertEquals(" # Item                   Price Quan. Discount     Total\n" +
+        assertEquals("# Item                         Price Quan. Discount Total \n" +
                         "---------------------------------------------------------\n" +
-                        " 1 Coca-Cola              $2.25    1      90%       $.23\n" +
-                        " 2 Bud Light              $3.50    1      10%      $3.15\n" +
-                        " 3 Best Milk For Kids     $1.75    2      50%      $1.75\n" +
-                        " 4 Super Clean Refre...   $9.99    1        -      $9.99\n" +
+                        "1 Coca-Cola                    $2.25     1        - $2.25 \n" +
+                        "2 Bud Light                    $3.50     1        - $3.50 \n" +
+                        "3 Best Milk For Kids           $1.75     2      50% $1.75 \n" +
+                        "4 Super Clean Refreshing Water $9.99     1      90% $1.00 \n" +
                         "---------------------------------------------------------\n" +
-                        " 4                                                $15.11",
-                cart.toString());
+                        "4                                                   $8.50 ",
+                cart.formatTicket());
     }
 
     @Test
     public void testHeader() {
-        assertEquals( " # Item                   Price Quan. Discount     Total" +
-                        "\n---------------------------------------------------------",
-                getHeader(cart.toString()));
+        assertEquals( "# Item                         Price Quan. Discount Total \n" +
+                        "---------------------------------------------------------",
+                getHeader(cart.formatTicket()));
     }
 
     @Test
     public void testBody() {
-        assertEquals(" 1 Coca-Cola              $2.25    1      90%       $.23\n" +
-                        " 2 Bud Light              $3.50    1      10%      $3.15\n" +
-                        " 3 Best Milk For Kids     $1.75    2      50%      $1.75\n" +
-                        " 4 Super Clean Refre...   $9.99    1        -      $9.99",
-                getBody(cart.toString()));
+        assertEquals("1 Coca-Cola                    $2.25     1        - $2.25 \n" +
+                        "2 Bud Light                    $3.50     1        - $3.50 \n" +
+                        "3 Best Milk For Kids           $1.75     2      50% $1.75 \n" +
+                        "4 Super Clean Refreshing Water $9.99     1      90% $1.00 ",
+                getBody(cart.formatTicket()));
     }
 
     @Test
     public void testFooter() {
         assertEquals("---------------------------------------------------------\n" +
-                        " 4                                                $15.11",
-                getFooter(cart.toString()));
+                        "4                                                   $8.50 ",
+                getFooter(cart.formatTicket()));
     }
 
 
