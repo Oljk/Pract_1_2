@@ -2,7 +2,7 @@ package odz;
 
 import org.junit.*;
 
-import odz.ShoppingCart.Item;
+import odz.Item.ItemType;
 
 public class ShoppingCarToStringTest extends junit.framework.TestCase {
 
@@ -12,10 +12,10 @@ public class ShoppingCarToStringTest extends junit.framework.TestCase {
     @Before
     public void setUp() {
         cart = new ShoppingCart();
-        cart.addItem("Coca-Cola", 2.25f, 1, Item.Type.SALE);
-        cart.addItem("Bud Light", 3.5f, 1, Item.Type.DISCOUNT);
-        cart.addItem("Best Milk For Kids", 1.75f,  2, Item.Type.SECOND);
-        cart.addItem("Super Clean Refreshing Water", 9.99f,  1, Item.Type.REGULAR);
+        cart.addItem("Coca-Cola", 2.25f, 1, ItemType.NEW);
+        cart.addItem("Bud Light", 3.5f, 1, ItemType.REGULAR);
+        cart.addItem("Best Milk For Kids", 1.75f,  2, ItemType.SECOND_FREE);
+        cart.addItem("Super Clean Refreshing Water", 9.99f,  1, ItemType.SALE);
     }
 
     @Test

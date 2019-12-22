@@ -41,8 +41,11 @@ public class Item {
                 break;
         }
         discount += quantity / 10;
-        if (discount > 80)
+        if (discount > 80 && type != Item.ItemType.SALE) {
             discount = 80;
+        } else if (type == Item.ItemType.SALE) {
+            discount = 90;
+        }
         return discount;
     }
 
