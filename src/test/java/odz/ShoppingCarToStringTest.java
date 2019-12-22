@@ -28,12 +28,12 @@ public class ShoppingCarToStringTest extends junit.framework.TestCase {
     public void testFilledCart() {
         assertEquals(" # Item                   Price Quan. Discount     Total\n" +
                         "---------------------------------------------------------\n" +
-                        " 1 Coca-Cola              $2.25    1      80%       $.45\n" +
+                        " 1 Coca-Cola              $2.25    1      90%       $.23\n" +
                         " 2 Bud Light              $3.50    1      10%      $3.15\n" +
                         " 3 Best Milk For Kids     $1.75    2      50%      $1.75\n" +
                         " 4 Super Clean Refre...   $9.99    1        -      $9.99\n" +
                         "---------------------------------------------------------\n" +
-                        " 4                                                $15.34",
+                        " 4                                                $15.11",
                 cart.toString());
     }
 
@@ -46,7 +46,7 @@ public class ShoppingCarToStringTest extends junit.framework.TestCase {
 
     @Test
     public void testBody() {
-        assertEquals(" 1 Coca-Cola              $2.25    1      80%       $.45\n" +
+        assertEquals(" 1 Coca-Cola              $2.25    1      90%       $.23\n" +
                         " 2 Bud Light              $3.50    1      10%      $3.15\n" +
                         " 3 Best Milk For Kids     $1.75    2      50%      $1.75\n" +
                         " 4 Super Clean Refre...   $9.99    1        -      $9.99",
@@ -56,7 +56,7 @@ public class ShoppingCarToStringTest extends junit.framework.TestCase {
     @Test
     public void testFooter() {
         assertEquals("---------------------------------------------------------\n" +
-                        " 4                                                $15.34",
+                        " 4                                                $15.11",
                 getFooter(cart.toString()));
     }
 
